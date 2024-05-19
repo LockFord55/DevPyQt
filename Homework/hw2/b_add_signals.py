@@ -17,6 +17,7 @@ class Window(QtWidgets.QWidget):
 
         :return: None
         """
+        self.setGeometry(800, 300, 350, 400)
 
         # comboBox -----------------------------------------------------------
         self.comboBox = QtWidgets.QComboBox()

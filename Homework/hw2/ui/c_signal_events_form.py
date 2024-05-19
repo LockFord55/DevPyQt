@@ -133,6 +133,7 @@ class Ui_Form(object):
         self.plainTextEdit = QPlainTextEdit(self.groupBox)
         self.plainTextEdit.setObjectName(u"plainTextEdit")
         self.plainTextEdit.setMinimumSize(QSize(200, 0))
+        self.plainTextEdit.setReadOnly(True)
 
         self.horizontalLayout_2.addWidget(self.plainTextEdit)
 

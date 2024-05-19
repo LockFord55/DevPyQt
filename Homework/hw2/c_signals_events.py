@@ -60,17 +60,17 @@ class Window(QtWidgets.QWidget):
         # self.position_tracker()
 
     def on_PushButtonGetData_clicked(self):
-        self.ui.plainTextEdit.setPlaceholderText(f'''
+        self.ui.plainTextEdit.appendPlainText(f'''
     Вывожу данные, состояние на {QtCore.QTime.currentTime().toString()}...\t
     Количество экранов: {len(app.screens())} \t
-    Текущее основное окно: ??? \t
+    Текущий основной экран: {QtGui.QGuiApplication.primaryScreen().name()} \t
     Разрешение экрана: {width}x{height} пикселей \t
-    Окно находится на экране №??? \t
+    Окно находится на экране: {QtGui.QGuiApplication.screenAt(self.geometry().center()).name()} \t
     Текущее разрешение окна: {self.window().width()}x{self.window().height()} пикселей \t
     Минимальные размеры окна: {self.window().minimumWidth()}x{self.window().minimumHeight()} пикселей \t
     Текущие координаты окна:   Х: {self.window().x()}   Y: {self.window().y()} \t
     Координаты центра приложения:   Х: {int((width-self.width())/2)}   Y: {int((height-self.height()-80)/2)} \t
-    Текущее состояние окна: ???
+    Текущее состояние окна: {self.windowState().name}
 ''')
 
     def position_tracker(self) -> None:
