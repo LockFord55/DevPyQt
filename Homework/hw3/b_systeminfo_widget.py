@@ -2,7 +2,7 @@ from a_threads import SystemInfo
 from PySide6 import QtWidgets, QtCore
 
 
-class Window(QtWidgets.QWidget):
+class WindowSystemInfo(QtWidgets.QWidget):
     def __init__(self, parent=None):
         super().__init__(parent)
 
@@ -83,7 +83,7 @@ class Window(QtWidgets.QWidget):
 if __name__ == '__main__':
     app = QtWidgets.QApplication()
 
-    window = Window()
+    window = WindowSystemInfo()
     window.show()
 
     app.exec()
