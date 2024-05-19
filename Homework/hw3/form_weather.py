@@ -75,7 +75,6 @@ class Ui_FormWeather(object):
 
         self.radioButton10 = QRadioButton(self.groupBoxUpdate)
         self.radioButton10.setObjectName(u"radioButton10")
-        self.radioButton10.setChecked(True)
 
         self.horizontalLayout_2.addWidget(self.radioButton10)
 
@@ -89,6 +88,7 @@ class Ui_FormWeather(object):
         sizePolicy1.setVerticalStretch(0)
         sizePolicy1.setHeightForWidth(self.textEditData.sizePolicy().hasHeightForWidth())
         self.textEditData.setSizePolicy(sizePolicy1)
+        self.textEditData.setReadOnly(True)
 
         self.verticalLayout.addWidget(self.textEditData)
 
