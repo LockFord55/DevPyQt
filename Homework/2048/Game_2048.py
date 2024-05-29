@@ -295,7 +295,7 @@ class GameWindow(QtWidgets.QWidget):
         self.refreshValue()
         self.updateIcon()
 
-    def checkDifferentMove(self):
+    def checkSameBoard(self):
         if self.tempBoard == self.board:
             return True
 
@@ -314,33 +314,35 @@ class GameWindow(QtWidgets.QWidget):
         for row in previousBoard:
             sumPrevious += sum(row)
 
-        self.score += (sumCurrent - sumPrevious) * 2
-
+        if sumCurrent == sumPrevious:
+            pass
+        else:
+            self.score += (sumCurrent - sumPrevious) * 2
 
     def keyPressEvent(self, event: QtGui.QKeyEvent) -> None:
         key = event.key()
         if key in (QtCore.Qt.Key.Key_A, QtCore.Qt.Key.Key_Left, 1060):
             self.tempBoard = copy.deepcopy(self.board)
             self.board = self.merge_left(self.board)
-            if self.checkDifferentMove():
+            if self.checkSameBoard():
                 self.board = self.tempBoard
 
         elif key in (QtCore.Qt.Key.Key_D, QtCore.Qt.Key.Key_Right, 1042):
             self.tempBoard = copy.deepcopy(self.board)
             self.board = self.merge_right(self.board)
-            if self.checkDifferentMove():
+            if self.checkSameBoard():
                 self.board = self.tempBoard
 
         elif key in (QtCore.Qt.Key.Key_S, QtCore.Qt.Key.Key_Down, 1067):
             self.tempBoard = copy.deepcopy(self.board)
             self.board = self.merge_down(self.board)
-            if self.checkDifferentMove():
+            if self.checkSameBoard():
                 self.board = self.tempBoard
 
         elif key in (QtCore.Qt.Key.Key_W, QtCore.Qt.Key.Key_Up, 1062):
             self.tempBoard = copy.deepcopy(self.board)
             self.board = self.merge_up(self.board)
-            if self.checkDifferentMove():
+            if self.checkSameBoard():
                 self.board = self.tempBoard
 
         else:
