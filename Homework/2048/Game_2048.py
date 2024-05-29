@@ -172,8 +172,8 @@ class GameWindow(QtWidgets.QWidget):
             # Проверяем, что текущее значение идентично соседу
             if row[i] == row[i + 1]:
                 row[i] *= 2
-                # if not self.checkDifferentMove():
-                #     self.score += row[i]
+                if not self.checkSameBoard():
+                    self.score += row[i]
                 row[i + 1] = 0
 
         # Снова двигаем всё влево
@@ -304,20 +304,20 @@ class GameWindow(QtWidgets.QWidget):
             self.settings.setValue('Record', self.score)
             event.accept()
 
-    def countScore(self, currentBoard, previousBoard):
-        sumCurrent = 0
-        sumPrevious = 0
-
-        for row in currentBoard:
-            sumCurrent += sum(row)
-
-        for row in previousBoard:
-            sumPrevious += sum(row)
-
-        if sumCurrent == sumPrevious:
-            pass
-        else:
-            self.score += (sumCurrent - sumPrevious) * 2
+    # def countScore(self, currentBoard, previousBoard):
+    #     sumCurrent = 0
+    #     sumPrevious = 0
+    #
+    #     for row in currentBoard:
+    #         sumCurrent += sum(row)
+    #
+    #     for row in previousBoard:
+    #         sumPrevious += sum(row)
+    #
+    #     if sumCurrent == sumPrevious:
+    #         pass
+    #     else:
+    #         self.score += (sumCurrent - sumPrevious) * 2
 
     def keyPressEvent(self, event: QtGui.QKeyEvent) -> None:
         key = event.key()
@@ -350,7 +350,7 @@ class GameWindow(QtWidgets.QWidget):
 
         self.addNewValue()
         self.refreshValue()
-        self.countScore(self.board, self.tempBoard)
+        #self.countScore(self.board, self.tempBoard)
         self.plainTextEdit_CurrentScore.setText(str(self.score))
         self.plainTextEdit_CurrentScore.setAlignment(QtCore.Qt.AlignmentFlag.AlignCenter)
         self.updateIcon()
